@@ -38,8 +38,8 @@ const dy = dx;
 const Mundo_inicial={snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }], dir: {x: 0, y: 0}, food: {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)}, moved: 1,score:0, time:0};
 
 //Variables para obtener los sonidos, por p5.sound solo se pueden usar variables
-var gameOver_sound;
-var food_sound;
+let gameOver_sound;
+let food_sound;
 //////////////////
 
 /**
@@ -170,11 +170,6 @@ function onTic(Mundo){
   }
 }
 
-
-//Implemente esta función si quiere que su programa reaccione a eventos del mouse
-function onMouseEvent (Mundo, event) {
-   return update(Mundo,{});
-}
 
 ////Control de direccion a partir de teclas
 
