@@ -1,0 +1,14 @@
+{
+  "name": "Jhon Abril",
+  "version": "0.0.1",
+  "description": "My own server",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Jhon Abril",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "^4.17.1",
+    "sqlite3": "latest"
+  }
+}
