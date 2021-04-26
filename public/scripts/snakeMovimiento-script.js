@@ -35,7 +35,7 @@ const dx = 15;
 const dy = dx;
 
 
-const Mundo_inicial={snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }], dir: {x: 0, y: 0}, food: {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)}, moved: 1,score:0, time:0};
+const Mundo_inicial={snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }], dir: {x: 0, y: 0}, food: {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)}, moved: 1,score:0, time:0, play:0};
 
 //Variables para obtener los sonidos, por p5.sound solo se pueden usar variables
 let gameOver_sound;
@@ -154,22 +154,47 @@ function body_crash(head,body,dir){
  }
 }
 
+
+
+//Funcion para enviar info a la data base
+
+function send_score(name,score){
+fetch('/api',{
+   method: 'POST',
+   headers: {'Content-Type': 'application/json'},
+   body: JSON.stringify({name:name, score:score})}
+   );
+ }
+
+
+
+
 // Esto se ejecuta en cada tic del reloj. Con esto se pueden hacer animaciones
 function onTic(Mundo){
-
-  if(wall_crash(Mundo.snake,Mundo.dir)||body_crash(first(Mundo.snake),rest(Mundo.snake),Mundo.dir)){
-    gameOver_sound.play(); //play game over sound
-   return update(Mundo,{snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }],dir: {x: 0, y: 0}, food:  {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)},moved: 1,score:0,time: 0});}
-  else if(food_eaten(Mundo.snake,Mundo.food)){
-    food_sound.play();// play eating sound
-   return update(Mundo, {snake: grow_up(Mundo.snake),score:Mundo.score+100 ,food:{x:random(2*dx,w_c-2*dx),y:random(2*dy,h_c-2*dy)},time:Mundo.time+(deltaTime/1000)});}
-  else if(Mundo.dir.x==0 && Mundo.dir.y==0 ){
-   return update(Mundo,{moved:1,time:0});}
-  else{
-   return update(Mundo, {snake: moveSnake(Mundo.snake, Mundo.dir),moved:1,time:Mundo.time+(deltaTime/1000)});
-  }
+  if(Mundo.play!=0){
+    console.log("y me moví");
+   if(wall_crash(Mundo.snake,Mundo.dir)||body_crash(first(Mundo.snake),rest(Mundo.snake),Mundo.dir)){
+      gameOver_sound.play(); //play game over sound
+      send_score(prompt('perdiste, tu puntaje fue de '+Mundo.score+ ' puntos. Ingresa tu nombre para guardar'),Mundo.score);
+      location.reload();
+      return update(Mundo,{snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }],dir: {x: 0, y: 0}, food:  {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)},moved: 1,score:0,time: 0});}
+   else if(food_eaten(Mundo.snake,Mundo.food)){
+     food_sound.play();// play eating sound
+     return update(Mundo, {snake: grow_up(Mundo.snake),score:Mundo.score+100 ,food:{x:random(2*dx,w_c-2*dx),y:random(2*dy,h_c-2*dy)},time:Mundo.time+(deltaTime/1000)});}
+   else if(Mundo.dir.x==0 && Mundo.dir.y==0 ){
+     return update(Mundo,{moved:1,time:0});}
+   else{
+     return update(Mundo, {snake: moveSnake(Mundo.snake, Mundo.dir),moved:1,time:Mundo.time+(deltaTime/1000)});
+   }
+  }else return update(Mundo,Mundo);
 }
 
+
+
+//Implemente esta función si quiere que su programa reaccione a eventos del mouse
+function onMouseEvent (Mundo, event) {
+   return update(Mundo,{});
+}
 
 ////Control de direccion a partir de teclas
 
@@ -213,6 +238,7 @@ function onKeyEvent (Mundo, keyCode) {
 function onTouchEvent (Mundo, keyCode) {
   // Cambiamos la dirección de la serpiente. Noten que no movemos la serpiente. Solo la dirección
  // console.log(keyCode);
+  console.log("Me hicieron mover");
   if(Mundo.moved==1){
   return update(Mundo,{dir:keyDirection(Mundo.dir, keyCode),moved:0});
   }else return update(Mundo,Mundo);

@@ -1,41 +1,68 @@
 const express = require('express');
 const Datastore = require('nedb');
+const database = new Datastore('./database.db');
+database.loadDatabase();
 
 const app = express();
 app.listen(3000, () => console.log("ALIVE!!!"));
 app.use(express.static('public'));
 app.use(express.json({limit:'1mb'}));
 
-const database = new Datastore('./database.db');
-database.loadDatabase();
+
+app.post('/api', (request,response) => {
+  const user = request.body;
+  
+  if(user.name!=null){
+    console.log(user);
+    if(user.name=='') insertDB("N/N",user.score);
+    else insertDB(user.name,user.score);
+  return;
+  }else{
+    response.end();
+    return;
+  }
+});
 
 
-function insertDB(name,score){
+app.get('/api', (request,response) => {
+  database.find({}).sort({ score:-1 }).exec((err, data)=>{
+    if(err){
+      response.end();
+      return;
+    }else{
+      console.log('passing data');
+     response.json(data);
+    } 
+  });
+
+});
+
+
+function insertDB(nombre,puntaje){
   database.insert({
-     user:{
-      name:name,
-       score:score
+      name:nombre,
+      score:puntaje
      }
-   });
+   );
  }
 
 
 
-// let name = prompt("Tu nombre: ");
-// let score = prompt("El puntaje: ");
-
 // async function getDatabase(){
-//   const response = await fetch("./database.db");
+//   const response = await fetch('/api');
 //   const data = await response.json();
-//   const divElement = document.getElementById("namesAndScores");
+//    const divElement = document.getElementById("namesAndScores");
+
+//   for(item of data){
 //   const createUser = document.createElement('p');
 //   const createScore = document.createElement('span');
-//   createUser.innerText = data.user.name + " ";
-//   createScore.innerText = "(" + data.user.score + ")";
+//   createUser.innerText = item.name + " ";
+//   createScore.innerText = "(" + item.score + ")";
 //   createUser.append(createScore);
-//   // for(let i = 0; i < 5; i++){
-//     divElement.append(createUser);
-//   // }
+//   divElement.append(createUser);
+//   }
+//   
+//   
 // }
 
 // getDatabase().catch(error => {

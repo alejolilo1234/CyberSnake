@@ -5,6 +5,10 @@
   div.mobile-arrows i{
     font-size:1.5em;
   }
+  .namesAndScores{
+  height:100px;
+  overflow:auto
+  }
 }
 @media screen and (max-width: 540px){
   .frame {
@@ -23,6 +27,10 @@
   }
   div.mobile-arrows{
     display:grid;
+  }
+  .namesAndScores{
+  height:110px;
+  overflow:auto
   }
 }
 @media (orientation: landscape) and (max-width: 920px){
@@ -43,5 +51,9 @@
   }
   div.mobile-arrows{
     display:grid;
+  }
+  .namesAndScores{
+  height:110px;
+  overflow:auto
   }
 }

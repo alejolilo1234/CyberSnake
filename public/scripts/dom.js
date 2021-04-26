@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded',() => {
     playModal.classList.add("hide");
     restart.classList.remove("hide");
     restart.classList.add("show");
+    Mundo=update(Mundo,{play:1, dir:{x:0,y:0}});
   })
   const instructionsButton = document.getElementById('buttonInstructions');
   const instructionsModal = document.getElementById("instructions");

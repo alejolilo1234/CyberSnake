@@ -87,6 +87,13 @@ div.mobile-arrows i{
   opacity:.05;
 }
 
+span.userPlusScore {
+    display: block;
+}
+.namesAndScores{
+  height:150px;
+  overflow:auto
+}
 .show{
   display:flex!important;
 }
