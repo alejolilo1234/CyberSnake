@@ -1,11 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <p>Hola mukjbionoijonoklnlknldo!!!!</p>
-</body>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cybersnake.alejolilo1234.repl.co/">
+    <meta property="og:image" content="./images/logo.jpg">
+    <meta name="og:title" content="CyberSnake | Proyecto FDP">
+    <meta name="og:description" content="Proyecto FDP">
+    <title>CyberSnake | Proyecto FDP</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/design.css">
+    <link rel="stylesheet" href="./styles/responsiveDesign.css">
+    <!-- Libraries -->
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="./libraries/functional-light_v0.6.0.js"></script>
+    <script src="./libraries/p5.js"></script>
+    <script src="./libraries/p5.sound.js"></script>
+    <script src="./libraries/p5js2functional.js"></script>
+  </head>
+  <body class="noisy">
+    <main>
+      <div class="frame">
+        <!-- <img class="logo" width="450" src="./Images/logo.svg" alt="CyberSnake logo"> -->
+        <div class="first-game" id="firstGame">
+          <h1>CyberSnake</h1>
+          <div>
+            <a id="buttonPlay">Jugar <i style="font-size:.7em;" class="fas fa-play-circle"></i></a><br>
+            <a id="buttonInstructions">Instrucciones <i style="font-size:.7em;" class="fas fa-list"></i></a><br>
+            <a id="scoresButton" href="#">Puntajes <i style="font-size:.7em;" class="fas fa-star"></i></a><br>
+            <a href="#">Repositorio <i style="font-size:.7em;" class="fab fa-github"></i></a><br>
+            <a id="contributorsButton">Colaboradores <i style="font-size:.7em;" class="fas fa-users"></i></a>
+          </div>
+        </div>
+        <div class="instructions hide" id="instructions">
+          <h1>Instrucciones</h1>
+          <div>
+            <span style="display:block;">• Usa las flechas de tu teclado o movil (<i style="font-size:.7em;" class="fas fa-arrow-up"></i>,<i style="font-size:.7em;" class="fas fa-arrow-down"></i>,<i style="font-size:.7em;" class="fas fa-arrow-left"></i>,<i style="font-size:.7em;" class="fas fa-arrow-right"></i>) para mover a la serpiente.</span>
+            <span style="display:block;">• Intenta obtener la mayor cantidad de puntos.</span>
+            <span style="display:block;">• Evita chocar con las paredes del mundo o de tu cuerpo, de otro modo perderás todos tus puntos.</span>
+            <!-- <span style="display:block;">• El juego acabará cuando hayas perdido todas tus vidas.</span> -->
+            <a style="display:inline-block;text-align:center;margin-top:20px;" id="back">Atras</a>
+          </div>
+        </div>
+        <div class="scores hide" id="scoresModal">
+          <h1>Puntajes</h1>
+          <div>
+            <div id="namesAndScores" style="height:150px;overflow:auto">
+              <!-- Names & scores -->
+            </div>
+            <a style="display:inline-block;text-align:center;margin-top:20px;" id="backScore">Atras</a>
+          </div>
+        </div>
+        <div class="contributors hide" id="contributors">
+          <h1>Colaboradores</h1>
+          <div>
+            <span style="display:block;">• Alejandra Giraldo</span>
+            <span style="display:block;">• Andrés López</span>
+            <span style="display:block;">• Jhon Abril</span>
+            <span style="display:block;">• Juan Murillo</span>
+            <span style="display:block;">• Stefhania Noguera</span>
+            <a style="display:inline-block;text-align:center;margin-top:20px;" id="backCon">Atras</a>
+          </div>
+        </div>
+        <div class="container-buttons-restart">
+          <div class="mobile-arrows">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"><i class="fas fa-arrow-up"></i></div>
+            <div class="grid-cell"></div>
+            <!-- row -->
+            <div style="justify-content:flex-start" class="grid-cell"><i class="fas fa-arrow-left"></i></div>
+            <div class="grid-cell"></div>
+            <div style="justify-content:flex-end" class="grid-cell"><i class="fas fa-arrow-right"></i></div>
+            <!-- row -->
+            <div class="grid-cell"></div>
+            <div class="grid-cell"><i class="fas fa-arrow-down"></i></div>
+            <div class="grid-cell"></div>
+          </div>
+          <a class="restart hide" id="restart" href="/">Recharge</a>
+        </div>
+        <div class="piece output">
+          <div id="canvas-div" class="canvas-div">
+            <!-- Game -->
+          </div>
+        </div>
+        <div class="piece scanlines noclick"></div>
+        <div class="piece glow noclick"></div>
+      </div>
+    </main>
+    <script src="./scripts/client.js"></script>
+    <script src="./scripts/dom.js"></script>
+    <script src="./scripts/snakeMovimiento-script.js"></script>
+  </body>
 </html>

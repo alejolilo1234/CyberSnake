@@ -9,6 +9,7 @@
   "dependencies": {
     "body-parser": "latest",
     "express": "^4.17.1",
+    "nedb": "^1.8.0",
     "sqlite3": "latest"
   }
 }

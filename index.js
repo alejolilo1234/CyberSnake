@@ -1,8 +1,25 @@
 const express = require('express');
-const app = express();
+const Datastore = require('nedb');
 
+const app = express();
 app.listen(3000, () => console.log("ALIVE!!!"));
 app.use(express.static('public'));
+app.use(express.json({limit:'1mb'}));
+
+const database = new Datastore('./database.db');
+database.loadDatabase();
+
+
+function insertDB(name,score){
+  database.insert({
+     user:{
+      name:name,
+       score:score
+     }
+   });
+ }
+
+
 
 // let name = prompt("Tu nombre: ");
 // let score = prompt("El puntaje: ");
