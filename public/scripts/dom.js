@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded',() => {
+  const audio = document.getElementById("audio");
   const restart = document.getElementById("restart");
   const playButton = document.getElementById("buttonPlay");
   const playModal = document.getElementById("firstGame");
   playButton.addEventListener('click',() => {
+    audio.play();
+    audio.volume = 0.5;
     playModal.classList.add("hide");
     restart.classList.remove("hide");
     restart.classList.add("show");
@@ -52,5 +55,21 @@ document.addEventListener('DOMContentLoaded',() => {
     playModal.classList.add("show");
     scoresModal.classList.remove("show");
     scoresModal.classList.add("hide");
+  });
+  const graphics = document.getElementById("graphics");
+  const graphicsButton = document.getElementById("graphicsButton");
+  graphicsButton.addEventListener("click",()=> {
+    scoresModal.classList.remove("show");
+    scoresModal.classList.add("hide");
+    graphics.classList.remove("hide");
+    graphics.classList.add("show");
   })
+  const backGraficsButton = document.getElementById("backGraficsButton");
+  backGraficsButton.addEventListener("click", () => {
+    scoresModal.classList.remove("hide");
+    scoresModal.classList.add("show");
+    graphics.classList.remove("show");
+    graphics.classList.add("hide");
+  })
+  
 })

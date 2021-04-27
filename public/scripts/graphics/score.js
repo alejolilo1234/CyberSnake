@@ -1,8 +1,12 @@
+// document.addEventListener("DOMContentLoaded",()=>{
+
+
 chartItScore();
 
 async function chartItScore(){
   let data = await getScores();
   let ctx = document.getElementById('myChartScores').getContext('2d');
+  Chart.defaults.color = "#fff";
   
   let myChart = new Chart(ctx, {
       type: 'bar',
@@ -22,7 +26,7 @@ async function chartItScore(){
           y: {
               ticks: {
                   callback: function(value, index, values) {
-                      return value + ' points';
+                      return value + ' p';
                   }
               }
           }
@@ -44,3 +48,6 @@ async function getScores(){
   }
   return [name,score];
 }
+
+
+// });

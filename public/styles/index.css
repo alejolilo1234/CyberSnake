@@ -16,7 +16,9 @@ main{
 div.first-game,
 div.instructions,
 div.contributors,
-div.scores{
+div.scores,
+div.gameOver,
+div.graphics{
   display:flex;
   justify-content:center;
   flex-direction:column;
@@ -93,6 +95,11 @@ span.userPlusScore {
 .namesAndScores{
   height:150px;
   overflow:auto
+}
+.myChartScoresContainer{
+  height:150px;
+  overflow:auto;
+  padding:0 20px;
 }
 .show{
   display:flex!important;

@@ -181,12 +181,29 @@ function onTic(Mundo){
       gameOver_sound.play(); //play game over sound
       dateNowLeave = Date.now();
       timeOnPage = ((dateNowLeave - dateNow)*(1/1000));
-      
-      send_score(prompt('perdiste, tu puntaje fue de '+Mundo.score+ ' puntos. Ingresa tu nombre para guardar'),Mundo.score,Mundo.time,timeOnPage);
 
-      location.reload();
+      Mundo.play = 1;
+      const audio2 = document.getElementById("audio");
+      audio2.pause();
+      const restart2 = document.getElementById("restart");
+      restart2.classList.add("hide");
+      const gameOverModal = document.getElementById("gameOver");
+      const scoreDisplay = document.getElementById("scoreDisplay");
+      const submitButton = document.getElementById("submitButton");
+      const nameOfUser = document.getElementById("nameOfUser");
+
+      scoreDisplay.innerHTML = Mundo.score;
+      gameOverModal.classList.remove("hide");
+      gameOverModal.classList.add("show");
+      submitButton.addEventListener('click', () => {
+        send_score(nameOfUser.value,Mundo.score,Mundo.time,timeOnPage);
+        location.reload();
+      });
+      // send_score(prompt('perdiste, tu puntaje fue de '+Mundo.score+ ' puntos. Ingresa tu nombre para guardar'),Mundo.score,Mundo.time,timeOnPage);
+
+      // location.reload();
       
-      return update(Mundo,{snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }],dir: {x: 0, y: 0}, food:  {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)},moved: 1,score:0,time: 0});
+      // return update(Mundo,{snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }],dir: {x: 0, y: 0}, food:  {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)},moved: 1,score:0,time: 0});
       }
    else if(food_eaten(Mundo.snake,Mundo.food)){
      food_sound.play();// play eating sound

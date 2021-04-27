@@ -20,8 +20,11 @@
     <script src="./libraries/p5.js"></script>
     <script src="./libraries/p5.sound.js"></script>
     <script src="./libraries/p5js2functional.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js"></script>
   </head>
   <body class="noisy">
+    <audio id="audio" src="./sounds/Snake.mp3" loop></audio>
     <main>
       <div class="frame">
         <!-- <img class="logo" width="450" src="./Images/logo.svg" alt="CyberSnake logo"> -->
@@ -41,18 +44,27 @@
             <span style="display:block;">• Usa las flechas de tu teclado o movil (<i style="font-size:.7em;" class="fas fa-arrow-up"></i>,<i style="font-size:.7em;" class="fas fa-arrow-down"></i>,<i style="font-size:.7em;" class="fas fa-arrow-left"></i>,<i style="font-size:.7em;" class="fas fa-arrow-right"></i>) para mover a la serpiente.</span>
             <span style="display:block;">• Intenta obtener la mayor cantidad de puntos.</span>
             <span style="display:block;">• Evita chocar con las paredes del mundo o de tu cuerpo, de otro modo perderás todos tus puntos.</span>
-            <!-- <span style="display:block;">• El juego acabará cuando hayas perdido todas tus vidas.</span> -->
             <a style="display:inline-block;text-align:center;margin-top:20px;" id="back">Atras</a>
           </div>
         </div>
         <div class="scores hide" id="scoresModal">
           <h1>Puntajes</h1>
           <div>
-            <div id="namesAndScores" class="namesAndScores">
+            <div class="namesAndScores" id="namesAndScores">
               <!-- Names & scores -->
             </div>
             <a style="display:inline-block;text-align:center;margin-top:20px;" id="backScore">Atras</a> | 
-            <a href="./graphics.html">Gráfico</a>
+            <a id="graphicsButton">Gráfico</a>
+          </div>
+        </div>
+        <div class="graphics hide" id="graphics">
+          <h1>Graficos</h1>
+          <div>
+            <div class="myChartScoresContainer">
+              <canvas id="myChartScores" style="width:100%!important" height="380"></canvas>
+              <canvas id="myChart" style="width:100%!important" height="380"></canvas>
+            </div>
+            <a style="display:inline-block;text-align:center;margin-top:20px;" id="backGraficsButton">Atras</a>
           </div>
         </div>
         <div class="contributors hide" id="contributors">
@@ -64,6 +76,19 @@
             <span style="display:block;">• Juan Murillo</span>
             <span style="display:block;">• Stefhania Noguera</span>
             <a style="display:inline-block;text-align:center;margin-top:20px;" id="backCon">Atras</a>
+          </div>
+        </div>
+        <div class="gameOver hide" id="gameOver">
+          <h1>Game over</h1>
+          <div>
+            <div id="" class="">
+              <span>tu puntaje fue de <span id="scoreDisplay"></span> puntos.<wbr> Ingresa tu nombre y presiona "Guardar":</span>
+              <div style="display:flex;justify-content:center;">
+                <input style="margin-top:10px;width:50%;border-radius:55px;padding:10px;border:1px solid #14fdce;background-color:rgba(0,0,0,0);color:#14fdce;font-family:'VT323';font-size:20px;" type="text" value="N/N input" id="nameOfUser">
+              </div>
+            </div>
+            <a style="display:inline-block;text-align:center;margin-top:20px;" id="submitButton">Guardar</a> | 
+            <a href="/">Menú</a>
           </div>
         </div>
         <div class="container-buttons-restart">
@@ -95,5 +120,7 @@
     <!-- <script src="./scripts/statistics.js"></script> -->
     <script src="./scripts/dom.js"></script>
     <script src="./scripts/snakeMovimiento-script.js"></script>
+    <script src="./scripts/graphics/score.js"></script>
+    <script src="./scripts/graphics/time.js"></script>
   </body>
 </html>

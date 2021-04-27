@@ -3,6 +3,8 @@ chartIt();
 async function chartIt(){
   let data = await getCSV();
   let ctx = document.getElementById('myChart').getContext('2d');
+  // console.log(Chart.defaults.color);
+  Chart.defaults.color = "#fff";
   
   let myChart = new Chart(ctx, {
       type: 'line',
