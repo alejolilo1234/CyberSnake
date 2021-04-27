@@ -9,6 +9,10 @@ Este es el proyecto del curso 2021-1 de Fundamentos de Programación.
 - Juan Murillo (juan.esteban.murillo@correounivalle.edu.co).
 - Stefhania Noguera (stefhania.noguera@correounivalle.edu.co).
 
+| Tecnología | Nombre | Descripción |
+| --- | -- | - |
+| Tipografía | Font Awesome | Font Awesome es un conjunto de herramientas de fuentes e íconos basado en CSS y Less. |
+
 ## Tipografía
 - Font Awesome
 
@@ -26,8 +30,10 @@ Este es el proyecto del curso 2021-1 de Fundamentos de Programación.
 - jsDeliver
 
 ## API & Layout
+- API fetch
+- JavaScript Object Notation (JSON)
 - JavaScript Document Object Model (JS DOM)
 - Cascade Style Sheets Flexbox (CSS Flexbox)
 - Cascade Style Sheets Grid (CSS Grid)
-- Cascade Style Sheets Animate (CSS Animate)
-- Cascade Style Sheets Responsive Web Design (CSS RWD)
+- Animate Cascade Style Sheets Animate (Animate CSS)
+- Responsive Web Design (RWD)
