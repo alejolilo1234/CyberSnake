@@ -12,8 +12,8 @@ async function chartItScore(){
                 label: 'Scores',
                 data: data[1],
                 fill: true,
-                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)',],
+                backgroundColor: ['rgba(0, 255, 0, 0.2)'],
+                borderColor: ['rgba(0, 255, 0, 1)',],
                 borderWidth: .5
               }]
             },
