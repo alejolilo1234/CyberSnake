@@ -1,3 +1,7 @@
+const dateNow = Date.now();
+let dateNowLeave;
+let timeOnPage;
+
 async function getDatabase(){
   const response = await fetch('/api');
   const data = await response.json();

@@ -158,11 +158,15 @@ function body_crash(head,body,dir){
 
 //Funcion para enviar info a la data base
 
-function send_score(name,score){
+function send_score(name,score,time,timeOnPage){
 fetch('/api',{
    method: 'POST',
    headers: {'Content-Type': 'application/json'},
-   body: JSON.stringify({name:name, score:score})}
+   body: JSON.stringify({
+     name:name, 
+     score:score,
+     time:time,
+     timeOnPage:timeOnPage})}
    );
  }
 
@@ -172,16 +176,15 @@ fetch('/api',{
 // Esto se ejecuta en cada tic del reloj. Con esto se pueden hacer animaciones
 function onTic(Mundo){
   if(Mundo.play!=0){
-    console.log("y me moví");
+    // console.log("y me moví");
    if(wall_crash(Mundo.snake,Mundo.dir)||body_crash(first(Mundo.snake),rest(Mundo.snake),Mundo.dir)){
       gameOver_sound.play(); //play game over sound
-      send_score(prompt('perdiste, tu puntaje fue de '+Mundo.score+ ' puntos. Ingresa tu nombre para guardar'),Mundo.score);
-
       dateNowLeave = Date.now();
-      timeInPage = ((dateNowLeave - dateNow)*(1/1000)).toFixed(2);
-      console.log(`The time spent in the page is ${timeInPage}.`);
+      timeOnPage = ((dateNowLeave - dateNow)*(1/1000));
       
-      // location.reload();
+      send_score(prompt('perdiste, tu puntaje fue de '+Mundo.score+ ' puntos. Ingresa tu nombre para guardar'),Mundo.score,Mundo.time,timeOnPage);
+
+      location.reload();
       
       return update(Mundo,{snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }],dir: {x: 0, y: 0}, food:  {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)},moved: 1,score:0,time: 0});
       }

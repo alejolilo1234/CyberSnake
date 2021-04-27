@@ -14,8 +14,8 @@ app.post('/api', (request,response) => {
   
   if(user.name!=null){
     // console.log(user);
-    if(user.name=='') insertDB("N/N",user.score);
-    else insertDB(user.name,user.score);
+    if(user.name=='') insertDB("N/N",user.score,user.time,user.timeOnPage);
+    else insertDB(user.name,user.score,user.time,user.timeOnPage);
   return;
   }else{
     response.end();
@@ -38,10 +38,12 @@ app.get('/api', (request,response) => {
 
 });
 
-function insertDB(nombre,puntaje){
+function insertDB(nombre,puntaje,time,timeOnPage){
   database.insert({
       name:nombre,
-      score:puntaje
+      score:puntaje,
+      time:time,
+      timeOnPage:timeOnPage
     }
   );
 }
