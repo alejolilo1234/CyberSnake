@@ -13,7 +13,7 @@ app.post('/api', (request,response) => {
   const user = request.body;
   
   if(user.name!=null){
-    console.log(user);
+    // console.log(user);
     if(user.name=='') insertDB("N/N",user.score);
     else insertDB(user.name,user.score);
   return;
@@ -24,27 +24,28 @@ app.post('/api', (request,response) => {
 });
 
 
+
 app.get('/api', (request,response) => {
   database.find({}).sort({ score:-1 }).exec((err, data)=>{
     if(err){
       response.end();
       return;
     }else{
-      console.log('passing data');
-     response.json(data);
+      // console.log('passing data');
+      response.json(data);
     } 
   });
 
 });
 
-
 function insertDB(nombre,puntaje){
   database.insert({
       name:nombre,
       score:puntaje
-     }
-   );
- }
+    }
+  );
+}
+
 
 
 
