@@ -12,14 +12,15 @@ Este es el proyecto del curso 2021-1 de Fundamentos de Programación.
 ## Tipografía
 - Font Awesome
 
-## Miscelánea 
-- Prism
+## Lenguaje de Programación
+- Node.js
 
-## Librerías JavaScript
-- Marked
+## Framework & Servidor Web
+- Express
 
 ## Graficos JavaScript
 - P5.js
+- Chart.js
 
 ## CDN
 - jsDeliver
