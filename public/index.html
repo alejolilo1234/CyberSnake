@@ -33,7 +33,7 @@
           <div>
             <a id="buttonPlay">Jugar <i style="font-size:.7em;" class="fas fa-play-circle"></i></a><br>
             <a id="buttonInstructions">Instrucciones <i style="font-size:.7em;" class="fas fa-list"></i></a><br>
-            <a id="scoresButton" href="#">Puntajes <i style="font-size:.7em;" class="fas fa-star"></i></a><br>
+            <a id="scoresButton">Puntajes <i style="font-size:.7em;" class="fas fa-star"></i></a><br>
             <a href="#">Repositorio <i style="font-size:.7em;" class="fab fa-github"></i></a><br>
             <a id="contributorsButton">Colaboradores <i style="font-size:.7em;" class="fas fa-users"></i></a>
           </div>
@@ -61,8 +61,8 @@
           <h1>Graficos</h1>
           <div>
             <div class="myChartScoresContainer">
-              <canvas id="myChartScores" style="width:100%!important" height="380"></canvas>
-              <canvas id="myChart" style="width:100%!important" height="380"></canvas>
+              <canvas id="myChartScores" width="200" height="380"></canvas>
+              <canvas id="myChart" width="200" height="380" class=""></canvas>
             </div>
             <a style="display:inline-block;text-align:center;margin-top:20px;" id="backGraficsButton">Atras</a>
           </div>
@@ -84,7 +84,7 @@
             <div id="" class="">
               <span>tu puntaje fue de <span id="scoreDisplay"></span> puntos.<wbr> Ingresa tu nombre y presiona "Guardar":</span>
               <div style="display:flex;justify-content:center;">
-                <input style="margin-top:10px;width:50%;border-radius:55px;padding:10px;border:1px solid #14fdce;background-color:rgba(0,0,0,0);color:#14fdce;font-family:'VT323';font-size:20px;" type="text" value="N/N input" id="nameOfUser">
+                <input style="margin-top:10px;width:50%;border-radius:55px;padding:10px;border:1px solid #14fdce;background-color:rgba(0,0,0,0);color:#14fdce;font-family:'VT323';font-size:20px;" type="text" value="" id="nameOfUser" maxlength="20">
               </div>
             </div>
             <a style="display:inline-block;text-align:center;margin-top:20px;" id="submitButton">Guardar</a> | 
@@ -117,10 +117,10 @@
       </div>
     </main>
     <script src="./scripts/client.js"></script>
-    <!-- <script src="./scripts/statistics.js"></script> -->
     <script src="./scripts/dom.js"></script>
     <script src="./scripts/snakeMovimiento-script.js"></script>
     <script src="./scripts/graphics/score.js"></script>
     <script src="./scripts/graphics/time.js"></script>
+    <script src="./scripts/block.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded',() => {
   const playModal = document.getElementById("firstGame");
   playButton.addEventListener('click',() => {
     audio.play();
-    audio.volume = 0.5;
+    audio.volume = 0.1;
     playModal.classList.add("hide");
     restart.classList.remove("hide");
     restart.classList.add("show");
