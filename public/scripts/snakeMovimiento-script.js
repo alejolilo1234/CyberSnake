@@ -27,15 +27,20 @@ function dir_inv(dir){
 }
 
 //Para obtener un numero entero aleatorio
-function getRandomInt(min, max) {
+function getRandomInt(max,min=0) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+//Funcion para obtener la nueva posicion de la comida
+function getFoodPosition(){
+  return {x:(getRandomInt((w_c/dx)-1,1)+0.5)*dx,y:(getRandomInt((h_c/dy)-1,1)+0.5)*dy}
 }
 
 const dx = 15;
 const dy = dx;
 
 
-const Mundo_inicial={snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }], dir: {x: 0, y: 0}, food: {x:getRandomInt(2*dx,w_c-2*dx),y:getRandomInt(2*dy,h_c-2*dy)}, moved: 1,score:0, time:0, play:0};
+const Mundo_inicial={snake: [{ x: 4, y: 1 },{ x: 3, y: 1 },{ x: 2, y: 1 },{ x: 1, y:1 }], dir: {x: 0, y: 0}, food: getFoodPosition() , moved: 1,score:0, time:0, play:0};
 
 //Variables para obtener los sonidos, por p5.sound solo se pueden usar variables
 let gameOver_sound;
@@ -100,14 +105,14 @@ function draw_Food(food){
 function draw_Score(score) {
   fill(20, 253, 206);
   textFont('VT323', 20);
-  text("SCORE: " + score, 20, 370);
+  text("SCORE: " + score, 20, 380);
 }
 
 //Dibujar tiempo
 function draw_Time(time) {
   fill(20, 253, 206);
   textFont('VT323', 20);
-  text(timeFormat(time), 230, 370);
+  text(timeFormat(time), 230, 380);
 }
 
 // Dibuja algo en el canvas. Aqui se pone todo lo que quieras pintar
@@ -131,7 +136,7 @@ function wall_crash(snake, dir){
 //Comio comida
 function food_eaten(snake,food){
   const head=first(snake);
-  return dx>=Math.floor(Math.sqrt(Math.pow((food.x-(head.x+1)*dx),2)+Math.pow((food.y-(head.y+1/2)*dy),2)));
+  return 0==Math.floor(Math.sqrt(Math.pow((food.x-(head.x+0.5)*dx),2)+Math.pow((food.y-(head.y+0.5)*dy),2)));
 }
 
 //agrandar cola
@@ -211,7 +216,7 @@ function onTic(Mundo){
       }
    else if(food_eaten(Mundo.snake,Mundo.food)){
      food_sound.play();// play eating sound
-     return update(Mundo, {snake: grow_up(Mundo.snake),score:Mundo.score+100 ,food:{x:random(2*dx,w_c-2*dx),y:random(2*dy,h_c-2*dy)},time:Mundo.time+(deltaTime/1000)});}
+     return update(Mundo, {snake: grow_up(Mundo.snake),score:Mundo.score+100 ,food:getFoodPosition(),time:Mundo.time+(deltaTime/1000)});}
    else if(Mundo.dir.x==0 && Mundo.dir.y==0 ){
      return update(Mundo,{moved:1,time:0});}
    else{

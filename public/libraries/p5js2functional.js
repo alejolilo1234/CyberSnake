@@ -1,6 +1,6 @@
 //Canvas size
-const w_c=500;
-const h_c=400;
+const w_c=525;
+const h_c=420;
 ///////////
 
 //Cuadros to touch
