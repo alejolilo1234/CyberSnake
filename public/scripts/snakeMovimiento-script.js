@@ -105,14 +105,14 @@ function draw_Food(food){
 function draw_Score(score) {
   fill(20, 253, 206);
   textFont('VT323', 20);
-  text("SCORE: " + score, 20, 380);
+  text("SCORE: " + score, 20, 385);
 }
 
 //Dibujar tiempo
 function draw_Time(time) {
   fill(20, 253, 206);
   textFont('VT323', 20);
-  text(timeFormat(time), 230, 380);
+  text(timeFormat(time), 230, 385);
 }
 
 // Dibuja algo en el canvas. Aqui se pone todo lo que quieras pintar
