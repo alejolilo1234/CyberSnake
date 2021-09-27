@@ -31,7 +31,6 @@ app.get('/api', (request,response) => {
       response.end();
       return;
     }else{
-      // console.log('passing data');
       response.json(data);
     } 
   });
@@ -47,27 +46,3 @@ function insertDB(nombre,puntaje,time,timeOnPage){
     }
   );
 }
-
-
-
-
-// async function getDatabase(){
-//   const response = await fetch('/api');
-//   const data = await response.json();
-//    const divElement = document.getElementById("namesAndScores");
-
-//   for(item of data){
-//   const createUser = document.createElement('p');
-//   const createScore = document.createElement('span');
-//   createUser.innerText = item.name + " ";
-//   createScore.innerText = "(" + item.score + ")";
-//   createUser.append(createScore);
-//   divElement.append(createUser);
-//   }
-//   
-//   
-// }
-
-// getDatabase().catch(error => {
-//   console.error(error);
-// });
